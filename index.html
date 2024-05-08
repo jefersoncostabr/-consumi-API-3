@@ -1,81 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de consumo de Api 3</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Teste de consumo de Api 3</title>
+	</head>
+	<body>
+		<h1>Teste de consumo de Api 3</h1>
+	</body>
+	<script>
+		const endpoint = "https://api-teste-3-cors-no-backend.onrender.com";
+		const endpoint2 = "https://api-teste-3-cors-no-backend.onrender.com/hello/you";
+		const endpoint3 = "https://api-teste-3-cors-no-backend.onrender.com/mensagens";
+		const endpoint4 = "https://api-teste-3-cors-no-backend.onrender.com/addmsg";
 
-    <h1>Teste de consumo de Api 3</h1>
-    
-</body>
-<script>
-    const endpoint = "http://localhost:3000/";
-    const endpoint2 = "http://localhost:3000/hello/you";
-    const endpoint3 = "http://localhost:3000/mensagens";
-    const endpoint4 = "http://localhost:3000/addmsg";
+		async function fetchData(url) {
+			try {
+				const response = await fetch(url);
+				const data = await response.text();
+				console.log(data);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		}
 
+		// Função para enviar dados (POST)
+		async function fetchPostData(url, data) {
+			try {
+				const response = await fetch(url, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				});
+				const responseText = await response.text();
+				console.log("Data sent:", responseText);
+			} catch (error) {
+				console.error("Error sending data:", error);
+			}
+		}
 
-    async function fetchData(url) {
-        try {
-            const response = await fetch(url);
-            const data = await response.text();
-            console.log(data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
+		const novaMsg = {
+			nome: "teste",
+			mensagem: "mensagem teste",
+		};
 
-    // Função para enviar dados (POST)
-    async function fetchPostData(url, data) {
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            const responseText = await response.text();
-            console.log('Data sent:', responseText);
-        } catch (error) {
-            console.error('Error sending data:', error);
-        }
-    }
+		async function deleteMsg(msgId) {
+			const response = await fetch(`https://api-teste-3-cors-no-backend.onrender.com/del/${msgId}`, {
+				method: "DELETE",
+			});
+			if (!response.ok) {
+				throw new Error(`HTTP error: ${response.status}`);
+			}
+			console.log("Mensagem deletada.");
+		}
 
-    const novaMsg = {
-        nome: "teste",
-        mensagem: "mensagem teste"
-    }
+		// Rota inicial
+		// fetchData(endpoint);
 
+		// comprimentos por parâmetro
+		// fetchData(endpoint2);
 
-    async function deleteMsg(msgId){
-        const response = await fetch(`http://localhost:3000/del/${msgId}`,
-        {
-            method: 'DELETE'
-        })
-        if(!response.ok){throw new Error(`HTTP error: ${response.status}`);}
-        console.log('Mensagem deletada.')
-    }
+		// exibir todas as mensagens
+		fetchData(endpoint3);
 
+		// Cadastrar
+		// fetchPostData(endpoint4, novaMsg);
 
-
-    // Rota inicial
-    // fetchData(endpoint);
-    
-    // comprimentos por parâmetro
-    // fetchData(endpoint2);
-
-    // exibir todas as mensagens
-    fetchData(endpoint3);
-
-    // Cadastrar
-    // fetchPostData(endpoint4, novaMsg);
-
-    // Apagar
-    // deleteMsg(1)
-
-
-</script>
+		// Apagar
+		// deleteMsg(1)
+	</script>
 </html>
