@@ -19,3 +19,10 @@ btnExibirPID.addEventListener('click', () =>{
     }
     fetchPostData(endpoint4, novaMsgComPrompt);
 });
+
+// Excluir Específico
+const btnExcluir = document.getElementById("btnExcluirPorId"); 
+btnExcluir.addEventListener('click', () =>{
+    let idEscolhido = prompt("Digite o numero do item a excluir").
+    deleteMsg(idEscolhido)
+});
