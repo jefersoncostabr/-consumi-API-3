@@ -1,12 +1,12 @@
-// export const endpoint = "https://api-teste-3-cors-no-backend.onrender.com";
-// export const endpoint2 = "https://api-teste-3-cors-no-backend.onrender.com/hello/you";
-// export const endpoint3 = "https://api-teste-3-cors-no-backend.onrender.com/mensagens";
-// export const endpoint4 = "https://api-teste-3-cors-no-backend.onrender.com/addmsg";
+export const endpoint = "https://api-teste-3-cors-no-backend.onrender.com";
+export const endpoint2 = "https://api-teste-3-cors-no-backend.onrender.com/hello/you";
+export const endpoint3 = "https://api-teste-3-cors-no-backend.onrender.com/mensagens";
+export const endpoint4 = "https://api-teste-3-cors-no-backend.onrender.com/addmsg";
 
-export const endpoint = "http://localhost:3000/";
-export const endpoint2 = "http://localhost:3000/hello/you";
-export const endpoint3 = "http://localhost:3000/mensagens";
-export const endpoint4 = "http://localhost:3000/addmsg";
+// export const endpoint = "http://localhost:3000/";
+// export const endpoint2 = "http://localhost:3000/hello/you";
+// export const endpoint3 = "http://localhost:3000/mensagens";
+// export const endpoint4 = "http://localhost:3000/addmsg";
 
 async function createListItems(data) {
     const painelDiv = document.getElementById("painel");
